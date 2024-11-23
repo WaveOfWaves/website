@@ -2,6 +2,7 @@ package pages
 
 import kotlinx.html.a
 import kotlinx.html.img
+import kotlinx.html.lazyImg
 import me.dvyy.shocky.page.Page
 import templates.default
 import kotlin.io.path.*
@@ -12,7 +13,7 @@ fun Page.gallery() = default {
         .filter { !it.nameWithoutExtension.endsWith("-min") }
     ) {
         a(href = image.pathString) {
-            img { src = image.pathString; alt = image.nameWithoutExtension }
+            lazyImg { src = image.pathString; alt = image.nameWithoutExtension }
         }
     }
 }

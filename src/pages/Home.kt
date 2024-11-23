@@ -56,7 +56,7 @@ fun Page.homePage() = default(
             }
         }
 
-        h2 { +"Servers" }
+        h2 { +"Our Servers" }
 
         div("grid grid-cols-1 md:grid-cols-3 gap-4 not-prose") {
             card(
@@ -100,20 +100,20 @@ fun Page.homePage() = default(
 //        )
 
         div("grid grid-cols-1 md:grid-cols-2 gap-4 not-prose") {
-            card("Explore the abyss", image = "/assets/gallery/orth-min.png", icon = { icons.map }) {
+            card("Explore the abyss", image = "/assets/gallery/orth-min.jpg", icon = { icons.map }) {
                 p { +"Explore the deepest Minecraft world, featuring 5 layers and over 7000 blocks." }
             }
 
             // Image by @khaz
-            card("Survive and thrive", image = "/assets/gallery/survival-min.png", icon = { icons.meat }) {
+            card("Survive and thrive", image = "/assets/gallery/survival-min.jpg", icon = { icons.meat }) {
                 p { +"Create guilds, beautiful player builds, and thrive in the depths of the abyss." }
             }
-            card("Discover new wildlife", image = "/assets/gallery/mobs-min.png", icon = { icons.butterfly }) {
+            card("Discover new wildlife", image = "/assets/gallery/mobs-min.jpg", icon = { icons.butterfly }) {
                 p { +"Discover a large variety of custom monsters and animals on each layer" }
             }
             card(
                 "Play with custom mechanics",
-                image = "/assets/gallery/bonfire-min.png",
+                image = "/assets/gallery/bonfire-min.jpg",
                 icon = { icons.settingsSpark }) {
                 p { +"Use our climbing system, feel the curse of the abyss, and play with many more features custom built for this server." }
             }

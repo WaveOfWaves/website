@@ -14,7 +14,7 @@ repositories {
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
     implementation("me.dvyy:shocky:0.0.5")
-    implementation("id.zelory:compressor:3.0.1")
+    implementation("com.sksamuel.scrimage:scrimage-core:4.2.0")
 }
 
 kotlin {

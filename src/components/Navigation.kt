@@ -14,7 +14,7 @@ fun FlowContent.navigation(outlined: Boolean = true, center: Boolean = true, pag
         val unselected = "bg-stone-800"
         fun isSelected(url: String) = if(page.url == url) selected else unselected
         div("flex space-x-2") {
-            coloredButton("About", isSelected("/"), "/#about")
+            coloredButton("Home", isSelected("/"), "/")
             coloredButton("Gallery", isSelected("/gallery"), "/gallery")//, icon = { icons.camera })
             coloredButton("Blog", isSelected("/blog"), "/blog")//, icon = { icons.article })
             coloredButton("Wiki", unselected, "https://wiki.mineinabyss.com")//, icon = { icons.infoCircle })

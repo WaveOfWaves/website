@@ -22,8 +22,8 @@ inline fun Page.default(
         body()
         main("prose prose-invert prose-stone prose-lg md:mx-auto max-w-screen-lg mt-12 px-4") {
             if (includeNavigation) {
+                h1("mt-8 mx-auto w-max") { +page.title }
                 navigation(page = page)
-                h1("mt-8") { +page.title }
             }
             prose()
         }
