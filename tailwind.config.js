@@ -2,8 +2,7 @@
 module.exports = {
     content: {
         files: [
-            './src/**/*.kt',
-            './site/**/*.md',
+            './out/**/*.html',
         ]
     },
     theme: {
