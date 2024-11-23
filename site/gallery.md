@@ -1,3 +1,4 @@
 ---
+title: Gallery
 template: gallery
 ---

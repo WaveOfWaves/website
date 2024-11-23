@@ -12,6 +12,7 @@ import templates.default
 data class HomeMeta(val faq: Map<String, String>)
 
 fun Page.homePage() = default(
+    includeNavigation = false,
     body = {
         fullScreenImage("/assets/mia_render.jpg") {
             div("flex flex-col items-center justify-center h-full relative") {

@@ -6,13 +6,13 @@ fun FlowContent.card(
     title: String,
     subtitle: String? = null,
     image: String? = null,
+    url: String? = null,
     imageHeight: String = "280px",
     icon: HTMLTag.() -> Unit = {},
     content: FlowContent.() -> Unit,
 ) {
-
     div("flex flex-col bg-stone-800 border border-stone-700 rounded-lg shadow-md") {
-        a(href = image) {
+        a(href = url ?: image) {
             div("group w-full ${if (image != null) "h-[$imageHeight]" else ""} relative overflow-hidden") {
                 if (image != null) {
                     img(
