@@ -1,0 +1,11 @@
+product: jvm/app
+repositories:
+  - id: "mineinabyss"
+    url: "https://repo.mineinabyss.com/releases"
+dependencies:
+  - "me.dvyy:shocky:0.0.4"
+settings:
+  kotlin:
+    serialization: json
+  jvm:
+    release: 21
