@@ -46,9 +46,9 @@ fun Page.homePage() = default(
         """.trimIndent()
     )
 
-    div("flex flex-row space-x-4") {
+    div("flex flex-row flex-wrap gap-4") {
         coloredButton("Join our Community", "bg-[#5865F2]", "https://discord.gg/jDd7x8V", icon = { icons.discord })
-        div("group") {
+        div("group grow") {
             coloredButton("Contribute", "bg-$primary", "https://mineinabyss.com/contributing",
                 icon = { div("group-hover:animate-heartBeat") { icons.heart } }
             )
@@ -121,7 +121,7 @@ fun Page.homePage() = default(
 
     h2 { +"Support us! " }
     p { +"We're a community-run project and rely on contributions from community members. We use all donations to keep our servers running and pay for tools like Axiom which our builders use to make the map." }
-    div("flex flex-row space-x-4") {
+    div("flex flex-row flex-wrap gap-4") {
         coloredButton("Patreon", "bg-[#e76551]", "https://www.patreon.com/mineinabyss", icon = { icons.patreon })
         coloredButton("Ko-fi", "bg-[#467CEB]", "https://ko-fi.com/mineinabyss", icon = { icons.kofi })
     }

@@ -25,9 +25,10 @@ inline fun Page.default(
         main("""prose prose-invert prose-stone prose-lg
             |prose-figcaption:italic prose-figcaption:text-center prose-figcaption:mt-0 prose-figcaption:mb-2 prose-figcaption:px-4
             |prose-img:mb-2
-            |md:mx-auto max-w-screen-lg mt-12 px-4""".trimMargin()) {
+            |md:mx-auto max-w-screen-lg mt-12 px-4
+            |overflow-x-hidden""".trimMargin()) {
             if (includeNavigation) {
-                h1("mt-8 mx-auto w-max") { +page.title }
+                h1("flex mt-8 mx-auto justify-center") { +page.title }
                 navigation(page = page)
             }
             prose()

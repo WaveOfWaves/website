@@ -29,13 +29,13 @@ fun Page.gallery() = default {
                 card(
                     meta?.title ?: image.nameWithoutExtension.capitalize(),
                     subtitle = if (meta != null) buildString {
-                        append("Author: ${meta.author}")
+                        append("By ${meta.author}")
                         if (meta.desc != null) {
                             append(" — ")
                             append(meta.desc)
                         }
                     } else null,
-                    imageHeight = "560",
+                    imageClasses = "h-64 sm:h-80 md:h-[32rem] lg:h-[42rem]",
                     showContent = false,
                     url = image.pathString,
                     image = minimized.pathString

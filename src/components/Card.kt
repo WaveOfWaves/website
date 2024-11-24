@@ -12,14 +12,14 @@ inline fun FlowContent.card(
     subtitle: String? = null,
     image: String? = null,
     url: String? = null,
-    imageHeight: String = "280px",
+    imageClasses: String = "h-54",
     showContent: Boolean = true,
     crossinline icon: HTMLTag.() -> Unit = {},
     crossinline content: FlowContent.() -> Unit = {},
 ) {
     div("not-prose flex flex-col bg-stone-800 border border-stone-700 rounded-lg shadow-md") {
         optionalA(href = url) {
-            div("group w-full ${if (image != null) "h-[$imageHeight]" else ""} relative overflow-hidden") {
+            div("group w-full ${if (image != null) imageClasses else ""} relative overflow-hidden") {
                 if (image != null) {
                     lazyImg(
                         src = image,
@@ -32,9 +32,9 @@ inline fun FlowContent.card(
                 div("${if (image != null) "absolute" else "pt-4"} ${if (url != null) "transition-opacity duration-300 group-hover:opacity-70" else ""} bottom-0 w-full px-4 mb-2 drop-shadow-lg") {
                     div("flex flex-row items-center space-x-1") {
                         icon()
-                        p("text-2xl font-bold") { +title }
+                        p("text-xl md:text-2xl font-bold") { +title }
                     }
-                    if (subtitle != null) code("text-sm select-all") { +subtitle }
+                    if (subtitle != null) p("text-sm select-all leading-snug font-mono") { +subtitle }
                 }
             }
         }
