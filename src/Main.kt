@@ -3,13 +3,17 @@ import com.charleskorn.kaml.decodeFromStream
 import com.sksamuel.scrimage.ImmutableImage
 import com.sksamuel.scrimage.ScaleMethod
 import com.sksamuel.scrimage.nio.ImageWriter
+import com.sksamuel.scrimage.nio.PngReader
+import com.sksamuel.scrimage.webp.WebpImageReader
 import com.sksamuel.scrimage.webp.WebpWriter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import me.dvyy.shocky.page.CommonFrontMatter
 import me.dvyy.shocky.page.Page
 import me.dvyy.shocky.shocky
 import pages.blogIndex
 import pages.gallery
-import pages.getImageMetaOrNull
 import pages.homePage
 import templates.blogPost
 import templates.default
@@ -46,15 +50,19 @@ suspend fun main(args: Array<String>) = shocky {
     }
 
     afterGenerate {
-        println("Generating images...")
-        Path("site/assets/gallery").walk()
-            .filter { it.isRegularFile() && it.extension == "webp" }
-            .forEach { path ->
-                println("Compressing $path")
-                compressImage(path, { scaleToHeight(560, ScaleMethod.Bicubic) }, "tiny", WebpWriter.DEFAULT.withMultiThread().withoutAlpha().withQ(75).withM(4))
-                compressImage(path, { scaleToHeight(1080, ScaleMethod.Bicubic) }, "min", WebpWriter.DEFAULT.withMultiThread().withoutAlpha().withQ(85).withM(4))
-            }
-        println("Done generating images!")
+        println("Compressing images...")
+        runBlocking(Dispatchers.IO) {
+            Path("site/assets/gallery").walk()
+                .filter { it.isRegularFile() && it.extension == "webp" }
+                .forEach { path ->
+                    launch {
+                        compressImage(path, { scaleToHeight(560, ScaleMethod.Bicubic) }, "tiny", WebpWriter.DEFAULT.withMultiThread().withoutAlpha().withQ(75).withM(4))
+                        compressImage(path, { scaleToHeight(1080, ScaleMethod.Bicubic) }, "min", WebpWriter.DEFAULT.withMultiThread().withoutAlpha().withQ(85).withM(4))
+                        println("Compressed $path")
+                    }
+                }
+        }
+        println("Done compressing images!")
     }
 }.run {
     when (args.firstOrNull()) {
@@ -72,6 +80,7 @@ fun compressImage(
     val outputPath = Path("out") / path.parent.relativeTo(Path("site")) / (path.nameWithoutExtension + "-$ext.webp")
     if (outputPath.exists()) return
     ImmutableImage.loader()
+        .withImageReaders(listOf(WebpImageReader()))
         .fromPath(path)
         .scaleToHeight(1080, ScaleMethod.Bicubic)
         .run(edit)
@@ -85,6 +94,7 @@ fun compress() {
         if (out.exists()) return@forEach
         println("Compressing $path")
         ImmutableImage.loader()
+            .withImageReaders(listOf(WebpImageReader(), PngReader()))
             .fromPath(path)
             .output(
                 WebpWriter.DEFAULT.withLossless().withoutAlpha().withMultiThread(),
