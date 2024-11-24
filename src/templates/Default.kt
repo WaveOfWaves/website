@@ -29,6 +29,6 @@ inline fun Page.default(
             }
             prose()
         }
-        div("md:h-36")
+        div("h-4 md:h-36")
     }
 }
