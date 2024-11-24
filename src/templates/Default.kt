@@ -8,7 +8,7 @@ import me.dvyy.shocky.page.Page
 inline fun Page.default(
     includeNavigation: Boolean = true,
     crossinline body: FlowContent.() -> Unit = { },
-    crossinline prose: FlowContent.() -> Unit = { markdown(content) },
+    crossinline prose: MAIN.() -> Unit = { markdown(content) },
 ) = html {
     lang = "en"
     head {
@@ -22,7 +22,10 @@ inline fun Page.default(
     }
     body(classes = "bg-stone-800 text-stone-100 min-h-screen overflow-x-hidden") {
         body()
-        main("prose prose-invert prose-stone prose-lg md:mx-auto max-w-screen-lg mt-12 px-4") {
+        main("""prose prose-invert prose-stone prose-lg
+            |prose-figcaption:italic prose-figcaption:text-center prose-figcaption:mt-0 prose-figcaption:mb-2 prose-figcaption:px-4
+            |prose-img:mb-2
+            |md:mx-auto max-w-screen-lg mt-12 px-4""".trimMargin()) {
             if (includeNavigation) {
                 h1("mt-8 mx-auto w-max") { +page.title }
                 navigation(page = page)
