@@ -43,7 +43,7 @@ suspend fun main(args: Array<String>) = Shocky(
             ImmutableImage.loader()
                 .fromPath(path)
                 .scaleToHeight(560, ScaleMethod.Bicubic)
-                .output(WebpWriter.DEFAULT, outputPath)
+                .output(WebpWriter.DEFAULT.withoutAlpha().withMultiThread(), outputPath)
         }
     println("Done generating images!")
 }

@@ -18,8 +18,9 @@ fun Page.homePage() = default(
             div("flex flex-col items-center justify-center h-full relative") {
 //                div("absolute top-0 left-0 right-0 drop-shadow-md") { navbar("Home") }
                 img(
-                    src = "/assets/logo.png",
-                    classes = "mx-auto md:w-1/2 w-3/4 transform transition-transform duration-300 hover:scale-105"
+                    src = "/assets/logo.svg",
+                    alt = "The Mine in Abyss logo",
+                    classes = "drop-shadow-md mx-auto md:w-1/2 w-3/4 transform transition-transform duration-300 hover:scale-105"
                 )
                 a(href = "#about", classes = "hidden md:block animate-pulse") {
                     icons.withClasses("h-14 w-14").chevronDown
@@ -47,7 +48,7 @@ fun Page.homePage() = default(
         )
 
         div("flex flex-row space-x-4") {
-            coloredButton("Join our Community", "bg-[#677cc7]", "https://discord.gg/jDd7x8V", icon = { icons.discord })
+            coloredButton("Join our Community", "bg-[#5865F2]", "https://discord.gg/jDd7x8V", icon = { icons.discord })
             div("group") {
                 coloredButton("Contribute", "bg-$primary", "https://mineinabyss.com/contributing",
                     icon = { div("group-hover:animate-heartBeat") { icons.heart } }
