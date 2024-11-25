@@ -38,7 +38,7 @@ inline fun FlowContent.card(
                 }
             }
         }
-        if (showContent) div(if (subtitle == null) "p-4" else "px-4 pb-4") {
+        if (showContent) div(if (image != null) "p-4" else "px-4 pb-4") {
             div("text-sm") {
                 content()
             }

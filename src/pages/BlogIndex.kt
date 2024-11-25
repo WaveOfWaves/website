@@ -3,7 +3,6 @@ package pages
 import components.card
 import kotlinx.html.div
 import kotlinx.html.h2
-import kotlinx.html.hr
 import kotlinx.html.p
 import me.dvyy.shocky.page.Page
 import me.dvyy.shocky.page.Pages
@@ -22,10 +21,10 @@ fun Page.blogIndex() = default {
             div("not-prose grid grid-cols-1 gap-4") {
                 posts.sortedByDescending { it.date }.forEach { post ->
                     card(post.title, url = post.url) {
+                        div("flex flex-row gap-2 mb-2") {
+                            post.tags.forEach { p("text-xs font-bold uppercase text-stone-400") { +it } }
+                        }
                         p { +(post.desc ?: "") }
-//                        div("flex") {
-//                            post.tags.forEach { p { +it } }
-//                        }
                     }
                 }
             }

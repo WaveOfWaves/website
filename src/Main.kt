@@ -13,6 +13,7 @@ import me.dvyy.shocky.page.CommonFrontMatter
 import me.dvyy.shocky.page.Page
 import me.dvyy.shocky.shocky
 import pages.blogIndex
+import pages.contributors
 import pages.gallery
 import pages.homePage
 import templates.blogPost
@@ -33,6 +34,7 @@ suspend fun main(args: Array<String>) = shocky {
         template("gallery", Page::gallery)
         template("home", Page::homePage)
         template("blog", Page::blogPost)
+        template("contributors", Page::contributors)
 
         pages(".")
 
