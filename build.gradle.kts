@@ -30,3 +30,14 @@ sourceSets {
 application {
     mainClass = "MainKt"
 }
+
+tasks {
+    task("generate") {
+        run.get().args("generate")
+        finalizedBy(run)
+    }
+    task("serve") {
+        run.get().args("serve")
+        finalizedBy(run)
+    }
+}

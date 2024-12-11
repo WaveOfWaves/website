@@ -26,16 +26,18 @@ inline fun Page.default(
         main("""prose prose-invert prose-stone prose-md
             |prose-figcaption:italic prose-figcaption:text-center prose-figcaption:mt-0 prose-figcaption:mb-2 prose-figcaption:px-4
             |prose-img:mb-2
-            |prose-h2:mb-4 prose-h2:mt-10
+            |prose-h2:mb-4 prose-h2:mt-8
             |prose-h3:mb-3 prose-h3:mt-4
             |prose-h4:mb-2 prose-h4:mt-3 prose-h4:uppercase prose-h4:text-stone-200
             |prose-li:my-1
+            |prose-ul:my-2
+            |prose-p:my-2
             |prose-a:text-stone-400
             |md:mx-auto max-w-screen-lg mt-12 px-4
             |overflow-x-hidden""".trimMargin()) {
             if (includeNavigation) {
                 h1("flex mt-8 mx-auto justify-center") { +page.title }
-                navigation(page = page)
+                div("pb-4") { navigation(page = page) }
             }
             prose()
         }
