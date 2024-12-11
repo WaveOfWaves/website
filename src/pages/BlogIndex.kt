@@ -21,7 +21,7 @@ fun Page.blogIndex() = default {
             div("not-prose grid grid-cols-1 gap-4") {
                 posts.sortedByDescending { it.date }.forEach { post ->
                     card(post.title, url = post.url) {
-                        div("flex flex-row gap-2 mb-2") {
+                        div("flex flex-row gap-2 mt-1 mb-2") {
                             post.tags.forEach { p("text-xs font-bold uppercase text-stone-400") { +it } }
                         }
                         p { +(post.desc ?: "") }

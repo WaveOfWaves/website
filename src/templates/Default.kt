@@ -16,15 +16,21 @@ inline fun Page.default(
         meta(name = "viewport", content = "width=device-width, initial-scale=1.0")
         link(rel = "icon", type = "image/png", href = "/assets/favicon.png")
         link(rel = LinkRel.stylesheet, href = "/assets/tailwind/styles.css")
+        link(rel = LinkRel.stylesheet, href = "/assets/custom.css")
         title(page.title)
         meta(name = "description", content = page.desc ?: page.title)
         script(src = "/assets/scripts/dark-mode.js") {}
     }
     body(classes = "bg-stone-800 text-stone-100 min-h-screen overflow-x-hidden") {
         body()
-        main("""prose prose-invert prose-stone prose-lg
+        main("""prose prose-invert prose-stone prose-md
             |prose-figcaption:italic prose-figcaption:text-center prose-figcaption:mt-0 prose-figcaption:mb-2 prose-figcaption:px-4
             |prose-img:mb-2
+            |prose-h2:mb-4 prose-h2:mt-10
+            |prose-h3:mb-3 prose-h3:mt-4
+            |prose-h4:mb-2 prose-h4:mt-3 prose-h4:uppercase prose-h4:text-stone-200
+            |prose-li:my-1
+            |prose-a:text-stone-400
             |md:mx-auto max-w-screen-lg mt-12 px-4
             |overflow-x-hidden""".trimMargin()) {
             if (includeNavigation) {

@@ -14,6 +14,7 @@ import me.dvyy.shocky.page.Page
 import me.dvyy.shocky.shocky
 import pages.blogIndex
 import pages.contributors
+import pages.faq
 import pages.gallery
 import pages.homePage
 import templates.blogPost
@@ -49,6 +50,8 @@ suspend fun main(args: Array<String>) = shocky {
         "blog" {
             generate(meta = CommonFrontMatter(title = "Blog", url = "/blog")) { blogIndex() }
         }
+
+        generate("faq", meta = CommonFrontMatter(title = "Faq")) { faq() }
     }
 
     afterGenerate {

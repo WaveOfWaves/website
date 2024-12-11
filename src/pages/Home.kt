@@ -6,7 +6,9 @@ import kotlinx.html.*
 import kotlinx.serialization.Serializable
 import me.dvyy.shocky.markdown
 import me.dvyy.shocky.page.Page
+import me.dvyy.shocky.page.Pages
 import templates.default
+import kotlin.io.path.Path
 
 @Serializable
 data class HomeMeta(val faq: Map<String, String>)
@@ -112,10 +114,26 @@ fun Page.homePage() = default(
 
     h2 { +"FAQ" }
 
-    div("not-prose flex flex-col space-y-4") {
-        val homeMeta = page.meta<HomeMeta>()
-        for ((question, answer) in homeMeta.faq.entries) {
-            faqEntry(question, answer)
+    val homeMeta = page.meta<HomeMeta>()
+    faq(homeMeta.faq)
+
+    h2 { +"More info" }
+
+    //TODO write an api to efficiently filter pages with tags
+    val pages = listOf(
+        Pages.single(Path("site/rules.md"), Path("site")),
+        Pages.single(Path("site/info/discord-linking.md"), Path("site")),
+        Pages.single(Path("site/socials.md"), Path("site")),
+    )
+
+    div("grid grid-cols-1 md:grid-cols-3 gap-4 not-prose") {
+        pages.map { it.readFrontMatter() }.forEach { post ->
+            card(post.title, url = post.url) {
+                div("flex flex-row gap-2 mb-2") {
+                    post.tags.forEach { p("text-xs font-bold uppercase text-stone-400") { +it } }
+                }
+                p { +(post.desc ?: "") }
+            }
         }
     }
 
@@ -126,4 +144,3 @@ fun Page.homePage() = default(
         coloredButton("Ko-fi", "bg-[#467CEB]", "https://ko-fi.com/mineinabyss", icon = { icons.kofi })
     }
 }
-

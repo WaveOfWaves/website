@@ -1,7 +1,5 @@
 package pages
 
-import com.charleskorn.kaml.Yaml
-import com.charleskorn.kaml.decodeFromStream
 import components.card
 import kotlinx.html.classes
 import kotlinx.html.div
